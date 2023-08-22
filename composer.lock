@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d60780d7aacc8c1f0fe4e7c9ae6b826",
+    "content-hash": "fddfede196dd065e983429af7575271f",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -2075,6 +2075,55 @@
     ],
     "packages-dev": [
         {
+            "name": "dmhendricks/file-icon-vectors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmhendricks/file-icon-vectors.git",
+                "reference": "9b4b95928f7ff8d73bf45edf34862386e3c48ea5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmhendricks/file-icon-vectors/zipball/9b4b95928f7ff8d73bf45edf34862386e3c48ea5",
+                "reference": "9b4b95928f7ff8d73bf45edf34862386e3c48ea5",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "component",
+            "extra": {
+                "component": {
+                    "name": "file-icon-vectors",
+                    "files": [
+                        "css/**",
+                        "icons/**"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel M. Hendricks",
+                    "homepage": "https://danhendricks.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A collection of file type icons in SVG format.",
+            "keywords": [
+                "css",
+                "file",
+                "icon",
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/dmhendricks/dmhendricks/file-icon-vectors",
+                "source": "https://github.com/dmhendricks/file-icon-vectors/tree/master"
+            },
+            "time": "2020-01-09T21:43:05+00:00"
+        },
+        {
             "name": "laravel/pint",
             "version": "v1.11.0",
             "source": {
@@ -2143,7 +2192,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "dmhendricks/file-icon-vectors": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

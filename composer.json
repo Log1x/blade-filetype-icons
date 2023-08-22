@@ -21,6 +21,7 @@
     "illuminate/support": "^9.0|^10.0"
   },
   "require-dev": {
+    "dmhendricks/file-icon-vectors": "dev-master",
     "laravel/pint": "^1.11"
   },
   "autoload": {

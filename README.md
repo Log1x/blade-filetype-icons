@@ -71,6 +71,18 @@ The square-o icons can be referenced like this:
 <x-filetype-s-exe />
 ```
 
+The high-contrast icons can be referenced like this:
+
+```blade
+<x-filetype-hc-exe />
+```
+
+The extra icons can be referenced like this:
+
+```blade
+<x-filetype-e-folder />
+```
+
 ### Raw SVG Icons
 
 If you want to use the raw SVG icons as assets, you can publish them using:
