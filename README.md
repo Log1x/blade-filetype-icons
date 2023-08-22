@@ -2,7 +2,7 @@
 
 ![Latest Stable Version](https://img.shields.io/packagist/v/log1x/blade-filetype-icons.svg?style=flat-square)
 ![Total Downloads](https://img.shields.io/packagist/dt/log1x/blade-filetype-icons.svg?style=flat-square)
-![Build Status](https://img.shields.io/github/actions/workflow/status/log1x/blade-filetype-icons/compatibility.yml?branch=master&style=flat-square)
+![Build Status](https://img.shields.io/github/actions/workflow/status/log1x/blade-filetype-icons/main.yml?branch=main&style=flat-square)
 
 A package to easily make use of [file-icon-vectors](https://github.com/dmhendricks/file-icon-vectors) by [Daniel Hendricks](https://github.com/dmhendricks) in your Laravel Blade views.
 
