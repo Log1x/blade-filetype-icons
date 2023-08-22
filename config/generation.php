@@ -59,15 +59,6 @@ $sanitize = function (string $icon, SplFileInfo $file, array $except = []) {
 
 return [
     [
-        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/classic',
-        'destination' => __DIR__.'/../resources/svg',
-        'output-prefix' => 'c-',
-        'safe' => true,
-        'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
-            $sanitize($icon, $file, ['fill', 'stroke']);
-        },
-    ],
-    [
         'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/square-o',
         'destination' => __DIR__.'/../resources/svg',
         'output-prefix' => 's-',
@@ -94,22 +85,31 @@ return [
             $sanitize($icon, $file);
         },
     ],
-    [
-        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/extra',
-        'destination' => __DIR__.'/../resources/svg',
-        'output-prefix' => 'e-',
-        'safe' => true,
-        'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
-            $sanitize($icon, $file, ['fill', 'stroke']);
-        },
-    ],
-    [
-        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/high-contrast',
-        'destination' => __DIR__.'/../resources/svg',
-        'output-prefix' => 'hc-',
-        'safe' => true,
-        'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
-            $sanitize($icon, $file);
-        },
-    ],
+    // [
+    //     'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/classic',
+    //     'destination' => __DIR__.'/../resources/svg',
+    //     'output-prefix' => 'c-',
+    //     'safe' => true,
+    //     'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
+    //         $sanitize($icon, $file);
+    //     },
+    // ],
+    // [
+    //     'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/extra',
+    //     'destination' => __DIR__.'/../resources/svg',
+    //     'output-prefix' => 'e-',
+    //     'safe' => true,
+    //     'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
+    //         $sanitize($icon, $file);
+    //     },
+    // ],
+    // [
+    //     'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/high-contrast',
+    //     'destination' => __DIR__.'/../resources/svg',
+    //     'output-prefix' => 'hc-',
+    //     'safe' => true,
+    //     'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
+    //         $sanitize($icon, $file);
+    //     },
+    // ],
 ];
