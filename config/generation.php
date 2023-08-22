@@ -5,12 +5,12 @@ use Symfony\Component\Finder\SplFileInfo;
 $sanitize = function (string $icon, SplFileInfo $file) {
     $disallowedAttributes = [
         '/<style>.*?<\/style>/s',
-        '/ (?<=\s)fill=".*?"/s' => ' fill="currentColor"',
-        '/ (?<=\s)stroke=".*?"/s' => ' stroke="currentColor"',
         '/ (?<=\s)id=".*?"/s',
         '/ (?<=\s)class=".*?"/s',
         '/ (?<=\s)height=".*?"/s',
         '/ (?<=\s)width=".*?"/s',
+        '/ (?<=\s)fill=".*?"/s' => ' fill="currentColor"',
+        '/ (?<=\s)stroke=".*?"/s' => ' stroke="currentColor"',
     ];
 
     $content = $file->getContents();
