@@ -10,8 +10,8 @@ $sanitize = function (string $icon, SplFileInfo $file, array $except = []) {
         'class' => '/ (?<=\s)class=".*?"/s',
         'height' => '/ (?<=\s)height=".*?"/s',
         'width' => '/ (?<=\s)width=".*?"/s',
-        'fill' => ['/ (?<=\s)fill="(?!(#fff|#ffffff|white)).*?"/s' => ' fill="currentColor"'],
-        'stroke' => ['/ (?<=\s)stroke="(?!(#fff|#ffffff|white)).*?"/s' => ' stroke="currentColor"'],
+        'fill' => ['/ (?<=\s)fill="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' fill="currentColor"'],
+        'stroke' => ['/ (?<=\s)stroke="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' stroke="currentColor"'],
     ];
 
     $colors = [
@@ -32,6 +32,8 @@ $sanitize = function (string $icon, SplFileInfo $file, array $except = []) {
         ->toArray();
 
     $content = $file->getContents();
+
+    $content = str_replace('<svg ', '<svg fill="currentColor" ', $content);
 
     foreach ($colors as $color) {
         $matches = [
