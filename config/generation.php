@@ -9,8 +9,8 @@ $sanitize = function (string $icon, SplFileInfo $file) {
         '/ (?<=\s)class=".*?"/s',
         '/ (?<=\s)height=".*?"/s',
         '/ (?<=\s)width=".*?"/s',
-        '/ (?<=\s)fill=".*?"/s' => ' fill="currentColor"',
-        '/ (?<=\s)stroke=".*?"/s' => ' stroke="currentColor"',
+        '/ (?<=\s)fill="(?!(#fff|#ffffff|white)).*?"/s' => ' fill="currentColor"',
+        '/ (?<=\s)stroke="(?!(#fff|#ffffff|white)).*?"/s' => ' stroke="currentColor"',
     ];
 
     $content = $file->getContents();
