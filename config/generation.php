@@ -1,26 +1,57 @@
 <?php
 
+use Illuminate\Support\Str;
 use Symfony\Component\Finder\SplFileInfo;
 
-$sanitize = function (string $icon, SplFileInfo $file) {
+$sanitize = function (string $icon, SplFileInfo $file, array $except = []) {
     $disallowedAttributes = [
-        '/<style>.*?<\/style>/s',
-        '/ (?<=\s)id=".*?"/s',
-        '/ (?<=\s)class=".*?"/s',
-        '/ (?<=\s)height=".*?"/s',
-        '/ (?<=\s)width=".*?"/s',
-        '/ (?<=\s)fill="(?!(#fff|#ffffff|white)).*?"/s' => ' fill="currentColor"',
-        '/ (?<=\s)stroke="(?!(#fff|#ffffff|white)).*?"/s' => ' stroke="currentColor"',
+        'style' => '/<style>.*?<\/style>/s',
+        'id' => '/ (?<=\s)id=".*?"/s',
+        'class' => '/ (?<=\s)class=".*?"/s',
+        'height' => '/ (?<=\s)height=".*?"/s',
+        'width' => '/ (?<=\s)width=".*?"/s',
+        'fill' => ['/ (?<=\s)fill="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' fill="currentColor"'],
+        'stroke' => ['/ (?<=\s)stroke="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' stroke="currentColor"'],
     ];
+
+    $colors = [
+        'st0',
+        'st1',
+        'st2',
+        'st3',
+        'st4',
+        'st5',
+        'st6',
+        'st7',
+    ];
+
+    $disallowedAttributes = collect($disallowedAttributes)
+        ->reject(function ($value, $key) use ($except) {
+            return in_array($key, $except);
+        })
+        ->toArray();
 
     $content = $file->getContents();
 
-    foreach ($disallowedAttributes as $attribute => $replacement) {
-        $content = preg_replace(
-            is_int($attribute) ? $replacement : $attribute,
-            is_int($attribute) ? '' : $replacement,
-            $content
-        );
+    $content = str_replace('<svg ', '<svg fill="currentColor" ', $content);
+
+    foreach ($colors as $color) {
+        $matches = [
+            ".{$color}{fill:#fff}",
+            ".{$color}{fill:#ffffff}",
+            ".{$color}{fill:white}",
+        ];
+
+        if (Str::contains($content, $matches)) {
+            $content = str_replace("class=\"{$color}\"", 'fill="#fff"', $content);
+        }
+    }
+
+    foreach ($disallowedAttributes as $attribute) {
+        $value = is_array($attribute) ? array_keys($attribute)[0] : $attribute;
+        $replacement = is_array($attribute) ? array_values($attribute)[0] : '';
+
+        $content = preg_replace($value, $replacement, $content);
     }
 
     file_put_contents($icon, $content);
@@ -33,7 +64,7 @@ return [
         'output-prefix' => 'c-',
         'safe' => true,
         'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
-            $sanitize($icon, $file);
+            $sanitize($icon, $file, ['fill', 'stroke']);
         },
     ],
     [
@@ -60,7 +91,7 @@ return [
         'output-prefix' => 'e-',
         'safe' => true,
         'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
-            $sanitize($icon, $file);
+            $sanitize($icon, $file, ['fill', 'stroke']);
         },
     ],
     [
