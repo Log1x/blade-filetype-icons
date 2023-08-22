@@ -86,6 +86,15 @@ return [
         },
     ],
     [
+        'source' => __DIR__.'/../resources/icons/vivid',
+        'destination' => __DIR__.'/../resources/svg',
+        'output-prefix' => 'v-',
+        'safe' => true,
+        'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
+            $sanitize($icon, $file);
+        },
+    ],
+    [
         'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/extra',
         'destination' => __DIR__.'/../resources/svg',
         'output-prefix' => 'e-',
