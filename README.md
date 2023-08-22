@@ -1,3 +1,5 @@
+![Social Image](https://i.imgur.com/V7BF0ku.png)
+
 # Blade File Type Icons
 
 ![Latest Stable Version](https://img.shields.io/packagist/v/log1x/blade-filetype-icons.svg?style=flat-square)
