@@ -10,8 +10,8 @@ $sanitize = function (string $icon, SplFileInfo $file, array $except = []) {
         'class' => '/ (?<=\s)class=".*?"/s',
         'height' => '/ (?<=\s)height=".*?"/s',
         'width' => '/ (?<=\s)width=".*?"/s',
-        'fill' => ['/ (?<=\s)fill="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' fill="currentColor"'],
-        'stroke' => ['/ (?<=\s)stroke="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' stroke="currentColor"'],
+        'fill' => ['/ (?<=\s)fill="(?!(#fff|#ffffff|white|currentColor|none)).*?"/s' => ' fill="currentColor"'],
+        'stroke' => ['/ (?<=\s)stroke="(?!(#fff|#ffffff|white|currentColor|none)).*?"/s' => ' stroke="currentColor"'],
     ];
 
     $colors = [
