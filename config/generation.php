@@ -28,7 +28,7 @@ $sanitize = function (string $icon, SplFileInfo $file) {
 
 return [
     [
-        'source' => __DIR__.'/../node_modules/file-icon-vectors/dist/icons/classic',
+        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/classic',
         'destination' => __DIR__.'/../resources/svg',
         'output-prefix' => 'c-',
         'safe' => true,
@@ -37,7 +37,7 @@ return [
         },
     ],
     [
-        'source' => __DIR__.'/../node_modules/file-icon-vectors/dist/icons/square-o',
+        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/square-o',
         'destination' => __DIR__.'/../resources/svg',
         'output-prefix' => 's-',
         'safe' => true,
@@ -46,9 +46,27 @@ return [
         },
     ],
     [
-        'source' => __DIR__.'/../node_modules/file-icon-vectors/dist/icons/vivid',
+        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/vivid',
         'destination' => __DIR__.'/../resources/svg',
         'output-prefix' => 'v-',
+        'safe' => true,
+        'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
+            $sanitize($icon, $file);
+        },
+    ],
+    [
+        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/extra',
+        'destination' => __DIR__.'/../resources/svg',
+        'output-prefix' => 'e-',
+        'safe' => true,
+        'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
+            $sanitize($icon, $file);
+        },
+    ],
+    [
+        'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/high-contrast',
+        'destination' => __DIR__.'/../resources/svg',
+        'output-prefix' => 'hc-',
         'safe' => true,
         'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
             $sanitize($icon, $file);
