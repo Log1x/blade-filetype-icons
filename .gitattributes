@@ -1,3 +1,4 @@
 /.gitattributes export-ignore
 /.github export-ignore
 /config/generation.php export-ignore
+/resources/icons export-ignore

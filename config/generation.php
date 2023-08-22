@@ -10,8 +10,8 @@ $sanitize = function (string $icon, SplFileInfo $file, array $except = []) {
         'class' => '/ (?<=\s)class=".*?"/s',
         'height' => '/ (?<=\s)height=".*?"/s',
         'width' => '/ (?<=\s)width=".*?"/s',
-        'fill' => ['/ (?<=\s)fill="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' fill="currentColor"'],
-        'stroke' => ['/ (?<=\s)stroke="(?!(#fff|#ffffff|white|currentColor)).*?"/s' => ' stroke="currentColor"'],
+        'fill' => ['/ (?<=\s)fill="(?!(#fff|#ffffff|#FFF|#FFFFFF|white|currentColor|none)).*?"/s' => ' fill="currentColor"'],
+        'stroke' => ['/ (?<=\s)stroke="(?!(#fff|#ffffff|#FFF|#FFFFFF|white|currentColor|none)).*?"/s' => ' stroke="currentColor"'],
     ];
 
     $colors = [
@@ -78,6 +78,15 @@ return [
     ],
     [
         'source' => __DIR__.'/../vendor/dmhendricks/file-icon-vectors/dist/icons/vivid',
+        'destination' => __DIR__.'/../resources/svg',
+        'output-prefix' => 'v-',
+        'safe' => true,
+        'after' => static function (string $icon, array $config, SplFileInfo $file) use ($sanitize) {
+            $sanitize($icon, $file);
+        },
+    ],
+    [
+        'source' => __DIR__.'/../resources/icons/vivid',
         'destination' => __DIR__.'/../resources/svg',
         'output-prefix' => 'v-',
         'safe' => true,
