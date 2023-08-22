@@ -8,6 +8,8 @@
 
 A package to easily make use of [file-icon-vectors](https://github.com/dmhendricks/file-icon-vectors) by [Daniel Hendricks](https://github.com/dmhendricks) in your Laravel Blade views.
 
+This package focuses on the `vivid` and `square-o` variations of `file-icon-vectors` as they are able to be made monochrome.
+
 For a full list of available icons, see [the SVG directory](resources/svg) or the [original repo](https://github.com/dmhendricks/file-icon-vectors/tree/master/dist/icons).
 
 ## Requirements
@@ -38,49 +40,31 @@ php artisan vendor:publish --tag=blade-filetype-icons-config
 Icons can be used as self-closing Blade components which will be compiled to SVG icons:
 
 ```blade
-<x-filetype-c-exe />
+<x-filetype-v-exe />
 ```
 
 You can also pass classes to your icon components:
 
 ```blade
-<x-filetype-c-exe class="w-6 h-6 text-gray-500" />
+<x-filetype-v-exe class="w-6 h-6 text-gray-500" />
 ```
 
 And even use inline styles:
 
 ```blade
-<x-filetype-c-exe style="color: #555" />
+<x-filetype-v-exe style="color: #555" />
 ```
 
 Or use the `@svg` directive:
 
 ```blade
-@svg('filetype-c-exe', 'w-6 h-6', ['style' => 'color: #555'])
-```
-
-The vivid icons can be referenced like this:
-
-```blade
-<x-filetype-v-exe />
+@svg('filetype-v-exe', 'w-6 h-6', ['style' => 'color: #555'])
 ```
 
 The square-o icons can be referenced like this:
 
 ```blade
 <x-filetype-s-exe />
-```
-
-The high-contrast icons can be referenced like this:
-
-```blade
-<x-filetype-hc-exe />
-```
-
-The extra icons can be referenced like this:
-
-```blade
-<x-filetype-e-folder />
 ```
 
 ### Raw SVG Icons
