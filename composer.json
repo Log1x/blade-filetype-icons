@@ -20,6 +20,9 @@
     "blade-ui-kit/blade-icons": "^1.1",
     "illuminate/support": "^9.0|^10.0"
   },
+  "require-dev": {
+    "laravel/pint": "^1.11"
+  },
   "autoload": {
     "psr-4": {
       "Log1x\\BladeFileTypeIcons\\": "src"
@@ -36,8 +39,5 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require-dev": {
-    "laravel/pint": "^1.11"
-  }
+  "prefer-stable": true
 }
